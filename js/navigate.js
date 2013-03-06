@@ -1,7 +1,7 @@
 $(document).ready(function(){//executed after the page has loaded
-    alert("here!");
     checkURL();//check if the URL has a reference to a page and load it
     $('ul li a').click(function (e){//traverse through all our navigation links..
+	alert("check");
 	checkURL(this.hash);//.. and assign them a new onclick event, using their own hash as a parameter (#page1 for example)
     });
     setInterval("checkURL()",250);//check for a change in the URL every 250 ms to detect if the history buttons have been used
@@ -15,14 +15,16 @@ function checkURL(hash)
     if(hash != lasturl)// if the hash value has changed
     {
 	lasturl=hash;//update the current hash
+	alert("hash is: " + hash);
 	loadPage(hash);// and load the new page
     }
 }
 
 function loadPage(url)//the function that loads pages via AJAX
 {
-    url=url.replace('#page','');//strip the #page part of the hash and leave only the page number
-    $('#loading').css('visibility','visible');//show the rotating gif animation
+    url=url.replace('#','');//strip the # part of the hash and leave only the name
+    // $('#loading').css('visibility','visible');//show the rotating gif animation
+    alert("url: " + url);
     $.ajax({//create an ajax request to load_page.php
 	type: "POST",
 	url: "load_page.php",
@@ -33,7 +35,7 @@ function loadPage(url)//the function that loads pages via AJAX
 	    if(parseInt(msg)!=0)//if no errors
 	    {
 		$('#pageContent').html(msg);//load the returned html into pageContet
-		$('#loading').css('visibility','hidden');//and hide the rotating gif
+		// $('#loading').css('visibility','hidden');//and hide the rotating gif
 	    }
 	}
     });
