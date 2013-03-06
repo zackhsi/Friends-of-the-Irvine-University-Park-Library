@@ -34,11 +34,7 @@ function loadPage(url)//the function that loads pages via AJAX
 	    if(parseInt(msg)!=0)//if no errors
 	    {
 		$('#content').html(msg);//load the returned html into pageContet
-		if (url=='index') {
-		    $('#page-title').html("<h1>Home <small>Irvine University Park Friends of the Library</small></h1>");
-		} else if (url=='hours_location') {
-		    $('#page-title').html("<h1>Hours & Location</h1>");
-		}
+		updateTitle(url);
 		// $('#loading').css('visibility','hidden');//and hide the rotating gif
 	    }
 	},
@@ -49,4 +45,21 @@ function loadPage(url)//the function that loads pages via AJAX
 	    }
 	}
     });
+}
+
+function updateTitle(url)
+{
+    if (url=='index') {
+	$('#page-title').html("<h1>Home <small>Irvine University Park Friends of the Library</small></h1>");
+    } else if (url=='hours_location') {
+	$('#page-title').html("<h1>Hours & Location</h1>");
+    } else if (url=='inventory') {
+	$('#page-title').html("<h1>Inventory</h1>");
+    } else if (url=='volunteering') {
+	$('#page-title').html("<h1>Volunteering</h1>");
+    } else if (url=='donating') {
+	$('#page-title').html("<h1>Donating</h1>");
+    } else if (url=='contact') {
+	$('#page-title').html("<h1>Contact</h1>");
+    }    
 }
