@@ -6,7 +6,7 @@ $(document).ready(function(){//executed after the page has loaded
     setInterval("checkURL()",250);//check for a change in the URL every 250 ms to detect if the history buttons have been used
 });
 
-var lasturl="";//here we store the current URL hash
+var lasturl="mumbojumbo";//here we store the current URL hash
 
 function checkURL(hash)
 {
@@ -22,7 +22,9 @@ function loadPage(url)//the function that loads pages via AJAX
 {
     url=url.replace('#','');//strip the # part of the hash and leave only the name
     // $('#loading').css('visibility','visible');//show the rotating gif animation
-    if (url=='') url='index';
+    if (url=='') {
+	url="index";
+    }
     $.ajax({//create an ajax request to load_page.php
 	type: "GET",
 	url: "pages/"+url+".html",
@@ -31,7 +33,12 @@ function loadPage(url)//the function that loads pages via AJAX
 	success: function(msg){
 	    if(parseInt(msg)!=0)//if no errors
 	    {
-		$('#wrap').html(msg);//load the returned html into pageContet
+		$('#content').html(msg);//load the returned html into pageContet
+		if (url=='index') {
+		    $('#page-title').html("<h1>Home <small>Irvine University Park Friends of the Library</small></h1>");
+		} else if (url=='hours_location') {
+		    $('#page-title').html("<h1>Hours & Location</h1>");
+		}
 		// $('#loading').css('visibility','hidden');//and hide the rotating gif
 	    }
 	},
