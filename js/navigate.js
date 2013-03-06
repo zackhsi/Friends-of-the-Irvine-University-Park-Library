@@ -1,5 +1,4 @@
 $(document).ready(function(){//executed after the page has loaded
-    alert("start");
     checkURL();//check if the URL has a reference to a page and load it
     $('ul li a').click(function (e){//traverse through all our navigation links..
 	checkURL(this.hash);//.. and assign them a new onclick event, using their own hash as a parameter (#page1 for example)
@@ -23,21 +22,21 @@ function loadPage(url)//the function that loads pages via AJAX
 {
     url=url.replace('#','');//strip the # part of the hash and leave only the name
     // $('#loading').css('visibility','visible');//show the rotating gif animation
-    alert("url: " + url);
+    if (url=='') url='index';
     $.ajax({//create an ajax request to load_page.php
-	type: "POST",
-	url: "load_page.php",
-	data: 'page='+url,//with the page number as a parameter
+	type: "GET",
+	url: "pages/"+url+".html",
+	// data: 'page='+url,//with the page number as a parameter
 	dataType: "html",//expect html to be returned
 	success: function(msg){
-
 	    if(parseInt(msg)!=0)//if no errors
 	    {
-		$('#pageContent').html(msg);//load the returned html into pageContet
+		$('#wrap').html(msg);//load the returned html into pageContet
 		// $('#loading').css('visibility','hidden');//and hide the rotating gif
 	    }
 	},
 	error:function (xhr, ajaxOptions, thrownError){
+	    alert("error");
 	    if(xhr.status==404) {
 		alert(thrownError);
 	    }
