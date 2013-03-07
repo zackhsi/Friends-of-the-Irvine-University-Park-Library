@@ -47,14 +47,14 @@ function updateTitle(url)
     if (url=='home') {
 	$('#page-title').html("<h1>Home <small>Irvine University Park Friends of the Library</small></h1>");
     } else if (url=='hours_location') {
-	$('#page-title').html("<h1>Hours & Location</h1>");
+	$('#page-title').html("<h1>Hours & Location <small>Irvine University Park Friends of the Library</small></h1>");
     } else if (url=='inventory') {
-	$('#page-title').html("<h1>Inventory</h1>");
+	$('#page-title').html("<h1>Inventory <small>Irvine University Park Friends of the Library</small></h1>");
     } else if (url=='volunteering') {
-	$('#page-title').html("<h1>Volunteering</h1>");
+	$('#page-title').html("<h1>Volunteering <small>Irvine University Park Friends of the Library</small></h1>");
     } else if (url=='donating') {
-	$('#page-title').html("<h1>Donating</h1>");
+	$('#page-title').html("<h1>Donating <small>Irvine University Park Friends of the Library</small></h1>");
     } else if (url=='contact') {
-	$('#page-title').html("<h1>Contact</h1>");
+	$('#page-title').html("<h1>Contact <small>Irvine University Park Friends of the Library</small></h1>");
     }    
 }
