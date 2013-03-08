@@ -7,29 +7,29 @@
 	</p>
 	<address>
 	  <abbr title="Phone">P:</abbr> (949) 786-1946<br>
-	  <a href="mailto:#">contact@folupirvine.org</a>
+	  <a href="mailto:contact@folupirvine.org">contact@folupirvine.org</a>
 	</address>
       </div>
     </div>
     <div class="span8">
       <div class="well">
-	<form class="form-horizontal">
+	<form class="form-horizontal" action="../php/email.php" method="post">
 	  <div class="control-group">
 	    <label class="control-label" for="inputEmail">Your Email Address</label>
 	    <div class="controls">
-	      <input type="text" id="inputEmail" placeholder="Email">
+	      <input type="email" id="inputEmail" placeholder="Email" required>
 	    </div>
 	  </div>
 	  <div class="control-group">
 	    <label class="control-label" for="subject">Subject</label>
 	    <div class="controls">
-	      <input type="text" id="subject" placeholder="Subject">
+	      <input type="text" id="subject" placeholder="Subject" required>
 	    </div>
 	  </div>
 	  <div class="control-group">
 	    <label class="control-label" for="message">Message</label>
 	    <div class="controls">
-	      <textarea id="message" class="span10" placeholder="Message" rows="10"></textarea>
+	      <textarea id="message" class="span10" placeholder="Message" rows="10" required></textarea>
 	    </div>
 	  </div>
 	  <div class="form-actions">
