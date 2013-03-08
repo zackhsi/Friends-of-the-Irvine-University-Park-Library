@@ -11,6 +11,7 @@ var lasturl="mumbojumbo";//here we store the current URL hash
 function checkURL(hash)
 {
     if(!hash) hash=window.location.hash;//if no parameter is provided, use the hash value from the current address
+    if(hash=='') hash='#home';
     if(hash != lasturl)// if the hash value has changed
     {
 	$('a[href='+lasturl+']').parent().removeClass("active");
