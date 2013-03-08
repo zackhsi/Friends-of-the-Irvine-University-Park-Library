@@ -6,9 +6,36 @@
       Irvine, CA 92612
     </address>
     <p>We're under the green awning.</p>
-    <div class="hero-unit">
-      GOOGLE MAP
-    </div>
+      <script type="text/javascript">
+      function initialize() {
+        var myLatLng=new google.maps.LatLng(33.66096,-117.82043);
+        var mapOptions = {
+          center: myLatLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"),
+            mapOptions);
+      var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title:"Friends of the Library"
+      });
+      }
+      </script>
+
+      <div id="map" style="width:100%; height:100%"></div>
+
+      <script type="text/javascript">
+	initialize();
+	$(window).resize(function () {
+	var h = $(window).height(),
+        offsetTop = 190; // Calculate the top offset
+	
+	$('#map').css('height', (h - offsetTop));
+	}).resize();
+      </script>
+
   </div>
   <div class="span4">
     <div class="row-fluid">
