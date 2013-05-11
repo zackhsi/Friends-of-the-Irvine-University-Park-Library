@@ -21,10 +21,17 @@
           map: map,
           title:"Friends of the Library"
         });
-        var infowindow = new google.maps.InfoWindow();
-        infowindow.setContent("FRIENDS");
-        infowindow.setPosition(myLatLng);
+        var infowindow = new google.maps.InfoWindow({
+          content: "friends"
+        });
+        <!-- infowindow.setPosition(myLatLng); -->
         <!-- infowindow.open(map); -->
+
+
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+        });
       }
       </script>
 
@@ -54,32 +61,32 @@
 	  </thead>
 	  <tbody>
 	    <tr>
-	      <th>Monday
-	      <th>12:00PM - 8:00PM
+	      <td>Monday
+	      <td>12:00PM - 8:00PM
 	    </tr>
 	    <tr>
-	      <th>Tuesday
-	      <th>10:30AM - 8:00PM
+	      <td>Tuesday
+	      <td>10:30AM - 8:00PM
+	    </tr>
+	    <tr class="warning">
+	      <td>Wednesday
+	      <td>CLOSED
 	    </tr>
 	    <tr>
-	      <th>Wednesday
-	      <th>CLOSED
+	      <td>Thursday
+	      <td>10:30AM - 6:30PM
 	    </tr>
 	    <tr>
-	      <th>Thursday
-	      <th>10:30AM - 6:30PM
+	      <td>Friday
+	      <td>10:30AM - 4:30PM
 	    </tr>
 	    <tr>
-	      <th>Friday
-	      <th>10:30AM - 4:30PM
+	      <td>Saturday
+	      <td>10:30AM - 4:30PM
 	    </tr>
-	    <tr>
-	      <th>Saturday
-	      <th>10:30AM - 4:30PM
-	    </tr>
-	    <tr>
-	      <th>Sunday
-	      <th>CLOSED
+	    <tr class="warning">
+	      <td>Sunday
+	      <td>CLOSED
 	    </tr>
 	  </tbody>
 	</table>
@@ -96,16 +103,16 @@
 	  </thead>
 	  <tbody>
 	    <tr>
-	      <th>Monday - Thursday
-	      <th>10:00AM - 9:00PM
+	      <td>Monday - Thursday
+	      <td>10:00AM - 9:00PM
 	    </tr>
 	    <tr>
-	      <th>Friday & Saturday
-	      <th>10:00AM - 5:00PM
+	      <td>Friday & Saturday
+	      <td>10:00AM - 5:00PM
 	    </tr>
 	    <tr>
-	      <th>Sunday
-	      <th>12:00PM - 5:00PM
+	      <td>Sunday
+	      <td>12:00PM - 5:00PM
 	    </tr>
 	  </tbody>
 	</table>
