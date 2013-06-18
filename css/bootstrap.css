@@ -6189,3 +6189,13 @@ a.badge:focus {
 .credit {
   margin: 20px 0;
 }
+
+/* my css */
+#announcements {
+  height: 600px;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
