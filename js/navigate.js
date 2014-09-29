@@ -1,42 +1,50 @@
-$(document).ready(function() { //executed after the page has loaded
-    checkURL(); //check if the URL has a reference to a page and load it
-    $('ul li a').click(function (e){//traverse through all our navigation links..
-        checkURL(this.hash);//.. and assign them a new onclick event, using their own hash as a parameter (#page1 for example)
+$(document).ready(function() {
+    checkURL(); // check if the URL has a reference to a page and load it
+    $('ul li a').click(function (e){ // traverse through all our navigation links..
+        checkURL(this.hash); // and assign them a new onclick event, using their own hash as a parameter (#page1 for example)
     });
-    setInterval("checkURL()",250);//check for a change in the URL every 250 ms to detect if the history buttons have been used
+    setInterval("checkURL()", 250);//check for a change in the URL every 250 ms to detect if the history buttons have been used
 });
 
-var lasturl="mumbojumbo";//here we store the current URL hash
+var lasturl="mumbojumbo";
 
 function checkURL(hash) {
     if (!hash) {
-        hash=window.location.hash;//if no parameter is provided, use the hash value from the current address
-    } else if (hash == '') {
+        if (lasturl === "mumbojumbo" && window.location.hash === '') {
+            // first page load, go home
+            hash = '#home';
+        } else {
+            // if no parameter is provided, use the hash value from the current address
+            hash = window.location.hash;
+        }
+    }
+    
+    if (hash == '') {
         hash='#home';
-    } if (hash != lasturl) { // if the hash value has changed
+    }
+    
+    if (hash != lasturl) {
         $('a[href=' + lasturl + ']').parent().removeClass("active");
-        lasturl = hash; //update the current hash
-        $('a[href=' + lasturl + ']').parent().addClass("active");
-        loadPage(hash); // and load the new page
+        $('a[href=' + hash + ']').parent().addClass("active");
+
+        lasturl = hash;
+        loadPage(hash);
     }
 }
 
-/** the function that loads pages via AJAX */
 function loadPage(url) {
     url = url.replace('#', ''); //strip the # part of the hash and leave only the name
-    // $('#loading').css('visibility','visible');//show the rotating gif animation
     if (url == '') {
         url = "home";
     }
-    $.ajax({ //create an ajax request to load_page.php
+    $.ajax({
         type: "GET",
         url: "pages/" + url + ".html",
-        dataType: "html",//expect html to be returned
+        dataType: "html",
         success: function(msg) {
-            if (parseInt(msg) != 0) { //if no errors
-                $('#content').html(msg);//load the returned html into pageContet
+            if (parseInt(msg) != 0) { // if no errors
+                $('#content').html(msg);
                 updateTitle(url);
-                // $('#loading').css('visibility','hidden');//and hide the rotating gif
             }
         },
     });
