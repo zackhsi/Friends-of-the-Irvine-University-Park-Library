@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    checkURL(); // check if the URL has a reference to a page and load it
+    checkURL(this.hash); // check if the URL has a reference to a page and load it
     $('ul li a').click(function (e){ // traverse through all our navigation links..
         checkURL(this.hash); // and assign them a new onclick event, using their own hash as a parameter (#page1 for example)
     });
@@ -10,17 +10,15 @@ var lasturl="mumbojumbo";
 
 function checkURL(hash) {
     if (!hash) {
-        if (lasturl === "mumbojumbo" && window.location.hash === '') {
-            // first page load, go home
-            hash = '#home';
-        } else {
-            // if no parameter is provided, use the hash value from the current address
-            hash = window.location.hash;
+        // polling
+        if (window.location.hash === lasturl) {
+            return;
         }
+        hash = window.location.hash;
     }
     
     if (hash == '') {
-        hash='#home';
+        hash = '#home';
     }
     
     if (hash != lasturl) {
@@ -33,7 +31,7 @@ function checkURL(hash) {
 }
 
 function loadPage(url) {
-    url = url.replace('#', ''); //strip the # part of the hash and leave only the name
+    url = url.replace('#', ''); // strip the # part of the hash and leave only the name
     if (url == '') {
         url = "home";
     }
